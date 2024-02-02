@@ -1,0 +1,52 @@
+definitions:
+  main.HelloRequest:
+    properties:
+      name:
+        type: string
+    type: object
+  main.Response:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: do health check
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: hello endpoint
+      tags:
+      - example
+  /hello:
+    post:
+      consumes:
+      - application/json
+      description: do greeting
+      parameters:
+      - description: Request Body
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/main.HelloRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: hello endpoint
+      tags:
+      - example
+swagger: "2.0"
